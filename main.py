@@ -1,10 +1,10 @@
-import threading
-from pyngrok import ngrok
+#import threading
+#from pyngrok import ngrok
 import uvicorn
 from fastapi import *
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from flask import Flask, render_template, request, jsonify
+#from flask import Flask, render_template, request, jsonify
 import sqlite3
 from starlette.staticfiles import StaticFiles
 
