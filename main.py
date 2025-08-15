@@ -28,18 +28,10 @@ def updateDB(hostname, ip_adress):
     :param ip_adress:
     :return: Updated DB
     """
-    DB_HOST = "dpg-d2fq9p7diees73co83cg-a"
-    DB_USER = "admin"
-    DB_PASSWORD = "9Nunf4zluOKitXz6OCpwmsLJW3K0feaG"
-    DB_NAME = "visitorjournal"
+    DATABASE_URL = "postgresql://admin:9Nunf4zluOKitXz6OCpwmsLJW3K0feaG@dpg-d2fq9p7diees73co83cg-a.frankfurt-postgres.render.com/visitorjournal"
 
-    conn = psycopg2.connect(
-        host=os.environ[DB_HOST],
-        port=int(os.environ.get("POSTGRES_PORT", 5432)),
-        user=os.environ[DB_USER],
-        password=os.environ[DB_PASSWORD],
-        dbname=os.environ[DB_NAME]
-    )
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')  # Render requires SSL
+
     cur = conn.cursor()
 
     cur.execute("""
