@@ -34,11 +34,11 @@ def updateDB(hostname, ip_adress):
     DB_NAME = "visitorjournal"
 
     conn = psycopg2.connect(
-        host=os.environ["DB_HOST"],
+        host=os.environ[DB_HOST],
         port=int(os.environ.get("POSTGRES_PORT", 5432)),
-        user=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"],
-        dbname=os.environ["DB_NAME"]
+        user=os.environ[DB_USER],
+        password=os.environ[DB_PASSWORD],
+        dbname=os.environ[DB_NAME]
     )
     cur = conn.cursor()
 
