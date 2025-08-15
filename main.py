@@ -5,7 +5,8 @@ from fastapi import *
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 #from flask import Flask, render_template, request, jsonify
-import mysql.connector
+import os
+import psycopg2 #This is the import for postgreSQL
 from starlette.staticfiles import StaticFiles
 
 # This is all necessary to launch the app.
@@ -23,13 +24,12 @@ def updateDB(hostname, ip_adress):
     :param ip_adress:
     :return: Updated DB
     """
-    conn = mysql.connector.connect(
-        host="127.0.0.1",
-        port = 3306,
-        user="root",
-        password="Monbubu2301!",
-        database="visitorJournal",
-        auth_plugin='caching_sha2_password'
+    conn = psycopg2.connect(
+        host=os.environ["dpg-d2fq9p7diees73co83cg-a"],
+        port = os.environ.get("POSTGRES_PORT", 5432),
+        user=os.environ["admin"],
+        password=os.environ["9Nunf4zluOKitXz6OCpwmsLJW3K0feaG"],
+        database=os.environ["visitorjournal"],
     )
     cur = conn.cursor()
 
