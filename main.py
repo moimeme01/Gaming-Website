@@ -56,11 +56,11 @@ async def home(request: Request):
     )
 
 
-def start_ngrok():
-    public_url = ngrok.connect(8000, bind_tls=True)
-    print(f"🌍 Public URL: {public_url}")
+#def start_ngrok():
+#    public_url = ngrok.connect(8000, bind_tls=True)
+#    print(f"🌍 Public URL: {public_url}")
 
 if __name__ == "__main__":
-    threading.Thread(target=start_ngrok).start()
+ #   threading.Thread(target=start_ngrok).start()
     # Lancer FastAPI
     uvicorn.run(app, host="0.0.0.0", port=8000)
