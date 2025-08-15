@@ -5,7 +5,7 @@ from fastapi import *
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 #from flask import Flask, render_template, request, jsonify
-import sqlite3
+import mysql.connector
 from starlette.staticfiles import StaticFiles
 
 # This is all necessary to launch the app.
@@ -23,18 +23,26 @@ def updateDB(hostname, ip_adress):
     :param ip_adress:
     :return: Updated DB
     """
-    conn = sqlite3.connect("visitor.db")
+    conn = mysql.connector.connect(
+        host="127.0.0.1",
+        port = 3306,
+        user="root",
+        password="Monbubu2301!",
+        database="visitorJournal",
+        auth_plugin='caching_sha2_password'
+    )
     cur = conn.cursor()
 
     cur.execute("""
     CREATE TABLE IF NOT EXISTS visitorJournal (
-        visitorNumber INTEGER PRIMARY KEY AUTOINCREMENT,
-        ip TEXT)
+        visitorNumber INT AUTO_INCREMENT PRIMARY KEY,
+        ip VARCHAR(255) NOT NULL)
     """)
 
-    cur.execute("INSERT INTO visitorJournal (ip) VALUES (?)", (ip_adress,))
+    cur.execute("INSERT INTO visitorJournal (ip) VALUES (%s)", (str(ip_adress),))
 
-    cur.execute("SELECT * FROM visitorJournal WHERE ip = ?", (ip_adress,))
+    cur.execute("SELECT * FROM visitorJournal WHERE ip = (%s)", (str(ip_adress),))
+
     result = cur.fetchall()
 
     if len(result) == 1:
