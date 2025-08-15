@@ -6,8 +6,11 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 #from flask import Flask, render_template, request, jsonify
 import os
-import psycopg2 #This is the import for postgreSQL
+#import psycopg2 #This is the import for postgreSQL
 from starlette.staticfiles import StaticFiles
+
+import psycopg2
+print("psycopg2 loaded successfully")
 
 # This is all necessary to launch the app.
 # The app.mount is usefull for using all the elements in static files. In other words, usefull for using js file ect.
@@ -24,18 +27,23 @@ def updateDB(hostname, ip_adress):
     :param ip_adress:
     :return: Updated DB
     """
+    DB_HOST = "dpg-d2fq9p7diees73co83cg-a"
+    DB_USER = "admin"
+    DB_PASSWORD = "9Nunf4zluOKitXz6OCpwmsLJW3K0feaG"
+    DB_NAME = "visitorjournal"
+
     conn = psycopg2.connect(
-        host=os.environ["dpg-d2fq9p7diees73co83cg-a"],
-        port = os.environ.get("POSTGRES_PORT", 5432),
-        user=os.environ["admin"],
-        password=os.environ["9Nunf4zluOKitXz6OCpwmsLJW3K0feaG"],
-        database=os.environ["visitorjournal"],
+        host=os.environ["DB_HOST"],
+        port=int(os.environ.get("POSTGRES_PORT", 5432)),
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"],
+        dbname=os.environ["DB_NAME"]
     )
     cur = conn.cursor()
 
     cur.execute("""
     CREATE TABLE IF NOT EXISTS visitorJournal (
-        visitorNumber INT AUTO_INCREMENT PRIMARY KEY,
+        visitorNumber SERIAL PRIMARY KEY,
         ip VARCHAR(255) NOT NULL)
     """)
 
