@@ -10,6 +10,7 @@ import os
 from starlette.staticfiles import StaticFiles
 
 import psycopg2
+
 print("psycopg2 loaded successfully")
 
 # This is all necessary to launch the app.
