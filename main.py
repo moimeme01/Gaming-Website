@@ -1,17 +1,16 @@
-#import threading
-#from pyngrok import ngrok
+import threading
+
+from flask.cli import load_dotenv
+from pyngrok import ngrok
 import uvicorn
 from fastapi import *
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 #from flask import Flask, render_template, request, jsonify
 import os
-#import psycopg2 #This is the import for postgreSQL
+import psycopg2 #This is the import for postgreSQL
 from starlette.staticfiles import StaticFiles
-
-import psycopg2
-
-print("psycopg2 loaded successfully")
+from dotenv import load_dotenv
 
 # This is all necessary to launch the app.
 # The app.mount is usefull for using all the elements in static files. In other words, usefull for using js file ect.
@@ -28,10 +27,16 @@ def updateDB(hostname, ip_adress):
     :param ip_adress:
     :return: Updated DB
     """
-    DATABASE_URL = "postgresql://admin:9Nunf4zluOKitXz6OCpwmsLJW3K0feaG@dpg-d2fq9p7diees73co83cg-a.frankfurt-postgres.render.com/visitorjournal"
+    load_dotenv()
 
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')  # Render requires SSL
-
+    conn = psycopg2.connect(
+        host=os.environ["DB_HOST"],
+        port=int(os.environ.get("POSTGRES_PORT", 5432)),
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"],
+        dbname=os.environ["DB_NAME"]
+    )
+    cur = conn.cursor()
     cur = conn.cursor()
 
     cur.execute("""
@@ -65,11 +70,11 @@ async def home(request: Request):
     )
 
 
-#def start_ngrok():
-#    public_url = ngrok.connect(8000, bind_tls=True)
-#    print(f"🌍 Public URL: {public_url}")
+def start_ngrok():
+    public_url = ngrok.connect(8000, bind_tls=True)
+    print(f"🌍 Public URL: {public_url}")
 
 if __name__ == "__main__":
- #   threading.Thread(target=start_ngrok).start()
+    threading.Thread(target=start_ngrok).start()
     # Lancer FastAPI
     uvicorn.run(app, host="0.0.0.0", port=8000)
