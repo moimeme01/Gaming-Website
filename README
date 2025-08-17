@@ -1,0 +1,10 @@
+This is a personal project destinated to create a website for playing games like Tusmo, skyjo, ect
+with the people invited by a gameCode.
+
+The database are created using MySQL preventing any use of an external server.
+To see the values in the DB, open the terminal and put:
+psql -h 127.0.0.1 -p 5432 -U admin -d visitorjournal
+
+then all the commands are the following:
+\ds for opening the db
+SELECT * FROM visitorjournal;

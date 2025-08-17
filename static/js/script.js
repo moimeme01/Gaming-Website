@@ -14,7 +14,6 @@ function updateClock() {
 
 // Wait until DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    showMessage();
     updateClock();
     setInterval(updateClock, 1000);
 });
