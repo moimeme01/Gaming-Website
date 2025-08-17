@@ -2,13 +2,59 @@ body{
     background:rgb(32, 75, 95);
 }
 
+.title {
+    display: inline-flex;
+    color: rgb(255, 255, 255);
+    font-family: 'Arial Rounded MT Bold', serif;
+    font-size: 40px;
+    line-height: 1;
+}
+
 .title-letter-T{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba(202,72,61);
-    width: 30px;
-    height: 30px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.title-letter-U{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin-left: -5px;
+}
+
+.title-letter-S{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(237, 186, 81);
+    border-radius: 50%;
+    margin-left: -5px;
+    rotate: 14deg;
+}
+
+.title-letter-M{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -5px;
+    z-index: 1;
+}
+
+.title-letter-O{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -5px;
+    background: rgba(202,72,61);
+    width: 40px;
+    height: 40px;
     border-radius: 5px;
 }

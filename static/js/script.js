@@ -12,8 +12,23 @@ function updateClock() {
     document.getElementById('clock').textContent = now.toLocaleTimeString();
 }
 
+function startGameBtnClick(){
+    document.getElementById('startGameBtn').addEventListener("click", function (){
+                window.location.href = "waitingroom.html"
+    });
+}
+
+function statsBtnClick(){
+    document.getElementById('statsBtn').addEventListener("click", function (){
+                window.location.href = "stats.html"
+    });
+}
+
+
 // Wait until DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     updateClock();
+    startGameBtnClick();
+    statsBtnClick();
     setInterval(updateClock, 1000);
 });
