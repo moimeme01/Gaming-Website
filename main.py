@@ -1,23 +1,30 @@
-import threading
+#import threading
 
+#from flask import redirect
 from flask.cli import load_dotenv
-from pyngrok import ngrok
+#from pyngrok import ngrok
 import uvicorn
-from fastapi import *
+from pathlib import Path
+from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 #from flask import Flask, render_template, request, jsonify
 import os
 import psycopg2 #This is the import for postgreSQL
+from starlette.responses import RedirectResponse
 from starlette.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
 # This is all necessary to launch the app.
 # The app.mount is usefull for using all the elements in static files. In other words, usefull for using js file ect.
 
+STATIC_DIR = Path("/Users/thibaultvanni/PycharmProjects/testingWebsite/static")
+TEMPLATES_DIR = Path("/Users/thibaultvanni/PycharmProjects/testingWebsite/templates")
+
+
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
 
 def updateDB(hostname, ip_adress):
@@ -69,13 +76,24 @@ async def home(request: Request):
         "homepage.html", {"request": request, "ip": client_ip}
     )
 
+@app.get("/waitingroom")
+async def waitingroom(request: Request):
+    return templates.TemplateResponse("waitingroom.html", {"request": request})
+
+@app.get("/tusmo")
+async def tusmo(request: Request):
+    return templates.TemplateResponse("tusmo.html", {"request": request})
+
+@app.get("/stats")
+async def statisticsssfssdd(request: Request):
+    return templates.TemplateResponse("stats.html", {"request": request})
 
 
-def start_ngrok():
-    public_url = ngrok.connect(8000, bind_tls=True)
-    print(f"🌍 Public URL: {public_url}")
+
+#def start_ngrok():
+#    print(f"🌍 Public URL: https://bear-smiling-gladly.ngrok-free.app")
 
 if __name__ == "__main__":
-    threading.Thread(target=start_ngrok).start()
+#    threading.Thread(target=start_ngrok).start()
     # Lancer FastAPI
     uvicorn.run(app, host="localhost", port=8000)

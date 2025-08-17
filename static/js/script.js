@@ -14,15 +14,22 @@ function updateClock() {
 
 function startGameBtnClick(){
     document.getElementById('startGameBtn').addEventListener("click", function (){
-                window.location.href = "waitingroom.html"
+                window.location.href = "/waitingroom"
     });
 }
 
 function statsBtnClick(){
     document.getElementById('statsBtn').addEventListener("click", function (){
-                window.location.href = "stats.html"
+                window.location.href = "/stats"
     });
 }
+
+function startTusmoBtn(){
+    document.getElementById('startTusmo').addEventListener("click", function (){
+                window.location.href = "/tusmo"
+    });
+}
+
 
 
 // Wait until DOM is loaded
@@ -31,4 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     startGameBtnClick();
     statsBtnClick();
     setInterval(updateClock, 1000);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    startTusmoBtn();
 });

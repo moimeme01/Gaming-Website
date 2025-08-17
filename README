@@ -8,3 +8,9 @@ psql -h 127.0.0.1 -p 5432 -U admin -d visitorjournal
 then all the commands are the following:
 \ds for opening the db
 SELECT * FROM visitorjournal;
+
+
+To kill all the active profiles on url open terminal then insert the following line:
+lsof -i :8000
+then:
+kill <ID>
