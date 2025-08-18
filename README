@@ -1,5 +1,12 @@
-This is a personal project destinated to create a website for playing games like Tusmo, skyjo, ect
+This is a personal project designated to create a website for playing games like Tusmo, skyjo, ect
 with the people invited by a gameCode.
+
+The goal of the site is that, one person launch a room, then get a code and invite other people with this code, then
+all the persons who have the code will automatically join this room. After that, they will choose a game and play.
+
+All the data (game duration, points, ...) will be stored in the database.
+
+I still don't know if I'll make the access through an account or simply via the ip address of the device.
 
 The database are created using MySQL preventing any use of an external server.
 To see the values in the DB, open the terminal and put:
