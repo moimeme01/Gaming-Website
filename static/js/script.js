@@ -39,8 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
     statsBtnClick();
     setInterval(updateClock, 1000);
 });
+function compare (word, guessing){
+    splitted_to_guess = word.split("");
+    splitted_guessing = guessing.split("");
 
-const dictionary = "a"
+}
+const choosen_word = "TEST"
 const alphabet = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 function tusmoGame(){
 
