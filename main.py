@@ -44,7 +44,6 @@ def updateDB(hostname, ip_adress):
         dbname=os.environ["DB_NAME"]
     )
     cur = conn.cursor()
-    cur = conn.cursor()
 
     cur.execute("""
     CREATE TABLE IF NOT EXISTS visitorJournal (
@@ -87,6 +86,7 @@ async def tusmo(request: Request):
 @app.get("/stats")
 async def statisticsssfssdd(request: Request):
     return templates.TemplateResponse("stats.html", {"request": request})
+
 
 
 

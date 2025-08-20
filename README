@@ -8,6 +8,11 @@ All the data (game duration, points, ...) will be stored in the database.
 
 I still don't know if I'll make the access through an account or simply via the ip address of the device.
 
+### Credits:
+The database "LEXIQUE" came from Bilgé Kimyonok (https://github.com/WhiteFangs/lexique.sql)
+
+
+
 The database are created using MySQL preventing any use of an external server.
 To see the values in the DB, open the terminal and put:
 psql -h 127.0.0.1 -p 5432 -U admin -d visitorjournal

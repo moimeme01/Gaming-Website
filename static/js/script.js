@@ -40,6 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateClock, 1000);
 });
 
+const dictionary = "a"
+const alphabet = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+function tusmoGame(){
+
+}
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     startTusmoBtn();
 });
