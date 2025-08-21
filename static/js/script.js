@@ -1,5 +1,3 @@
-console.log("External JS loaded!");
-
 
 function showMessage() {
     const output = document.getElementById('output');
@@ -66,14 +64,29 @@ function compare (word, guessing){
     return return_Array;
 }
 
-
-const choosen_word = "TEST"
-const alphabet = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-function tusmoGame(){
-
+function compare_founded_letters(all_correct_letters, all_in_word_letters, founded_letters, founded_in_word_letters) {
+    for (let letter of founded_letters) {
+        if (!(all_correct_letters.includes(letter))) {
+            all_correct_letters.push(letter);
+        }
+    }
+    for (let letter of founded_in_word_letters) {
+        if (!(all_in_word_letters.includes(letter))) {
+            all_in_word_letters.push(letter);
+        }
+    }
+    return [all_correct_letters, all_in_word_letters];
 }
 
+// first, display the grid as many text zones. Each square is a text input
+// then, need to assemble all the inputs as one words
+// then compare() with the first words
+// Then showing the result with all the correct letters at the right place
 
+const choosen_word = "TEST";
+const alphabet = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var all_correct_letters = [];
+var all_in_word_letters = [];
 
 
 

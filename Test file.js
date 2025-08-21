@@ -1,4 +1,8 @@
 
+var all_correct_letters = [];
+var all_in_word_letters = [];
+
+
 function compare (word, guessing){
     var splitted_to_guess = word.split("");
     var splitted_guessing = guessing.split("");
@@ -21,9 +25,34 @@ function compare (word, guessing){
             }
         }
     }
-    var return_Array = [correct, in_the_word];
-    return return_Array;
+    return [correct, in_the_word];
 }
 
-console.log(compare("TACLE", "ACLET"));
+//console.log(compare("TACLE", "ACLET"));
+
+function compare_founded_letters(all_correct_letters, all_in_word_letters, founded_letters, founded_in_word_letters) {
+    for (let letter of founded_letters) {
+        if (!(all_correct_letters.includes(letter))) {
+            all_correct_letters.push(letter);
+        }
+    }
+    for (let letter of founded_in_word_letters) {
+        if (!(all_in_word_letters.includes(letter))) {
+            all_in_word_letters.push(letter);
+        }
+    }
+    return [all_correct_letters, all_in_word_letters];
+}
+
+
+//console.log(compare_founded_letters(["T"],["R"],["T"], ["R","E"]));
+
+
+function random_word(dictionnaire) {
+    let endIndex = dictionnaire.length;
+    let choosen_one = Math.floor(Math.random() * endIndex);
+    return (dictionnaire[choosen_one]);
+}
+
+
 
