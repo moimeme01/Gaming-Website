@@ -18,8 +18,8 @@ from dotenv import load_dotenv
 # This is all necessary to launch the app.
 # The app.mount is usefull for using all the elements in static files. In other words, usefull for using js file ect.
 
-STATIC_DIR = Path("/Users/thibaultvanni/PycharmProjects/testingWebsite/static")
-TEMPLATES_DIR = Path("/Users/thibaultvanni/PycharmProjects/testingWebsite/templates")
+STATIC_DIR = Path("//static")
+TEMPLATES_DIR = Path("//templates")
 
 
 app = FastAPI()
