@@ -23,9 +23,5 @@ I am still considering whether to:
 
 ## 🗄 Database
 - The project uses **MySQL** databases (no external servers required).  
-- A special database called **LEXIQUE** is included, provided by [Bilgé Kimyonok](https://github.com/WhiteFangs/lexique.sql).  
+- A special database called **LEXIQUE** is included, created by collecting all the words from [listesdemots.net](https://www.listesdemots.net/touslesmots.htm) and enriching them with definitions from [Larousse](https://www.larousse.fr/).  
 
-### View the Database
-To explore the database manually:
-```bash
-psql -h 127.0.0.1 -p 5432 -U admin -d visitorjournal
